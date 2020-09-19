@@ -1171,6 +1171,8 @@ Error BindingsGenerator::_generate_cs_type(const TypeInterface &itype, const Str
 
 	output.append("\nnamespace " BINDINGS_NAMESPACE "\n" OPEN_BLOCK);
 
+	// This doesn't seem to add anything for classes like NodeExtensions.cs
+
 	const DocData::ClassDoc *class_doc = itype.class_doc;
 
 	if (class_doc && class_doc->description.size()) {
