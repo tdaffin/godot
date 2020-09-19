@@ -2,6 +2,12 @@ namespace Godot
 {
     public partial class Node
     {
+        public T GetNode<T>() where T : class
+        {
+            var name = typeof(T).Name;
+            return GetNode<T>(name);
+        }
+
         public T GetNode<T>(NodePath path) where T : class
         {
             return (T)(object)GetNode(path);
