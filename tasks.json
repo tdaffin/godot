@@ -1,0 +1,41 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build (debug)",
+            "type": "shell",
+            "command": "scons -j6 target=debug tools=yes module_mono_enabled=yes",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build (release_debug)",
+            "type": "shell",
+            "command": "scons -j6 target=release_debug tools=yes module_mono_enabled=yes",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build (release_debug) LTO",
+            "type": "shell",
+            "command": "scons -j6 target=release_debug tools=yes module_mono_enabled=yes use_lto=yes",
+            "group": "build"
+        },
+        {
+            "label": "build without mono glue",
+            "type": "shell",
+            "command": "scons -j6 target=debug module_mono_enabled=yes tools=yes mono_glue=no",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}
