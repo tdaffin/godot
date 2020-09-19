@@ -1,0 +1,4 @@
+scons -j6 target=debug module_mono_enabled=yes tools=yes mono_glue=no
+./bin/godot.linuxbsd.tools.64.mono --generate-mono-glue modules/mono/glue
+scons -j6 target=debug module_mono_enabled=yes tools=yes
+./bin/godot.linuxbsd.tools.64.mono 
