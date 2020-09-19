@@ -1,0 +1,78 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build (debug)",
+            "type": "shell",
+            "command": "scons -j6 target=debug tools=yes module_mono_enabled=yes",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build (debug test)",
+            "type": "shell",
+            "command": "scons -j6 target=debug tools=yes tests=yes module_mono_enabled=yes",
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build (release_debug)",
+            "type": "shell",
+            "command": "scons -j6 target=release_debug tools=yes module_mono_enabled=yes",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build with patched mono (release_debug)",
+            "type": "shell",
+            "command": "scons",
+            "args": [
+                "-j6",
+                "target=release_debug",
+                "tools=yes",
+                "module_mono_enabled=yes",
+                "mono_static=yes",
+                "copy_mono_root=yes",
+                "mono_prefix=\"$HOME/mono-installs/desktop-linux-x86_64-release\""
+            ],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build (release_debug) LTO",
+            "type": "shell",
+            "command": "scons -j6 target=release_debug tools=yes module_mono_enabled=yes use_lto=yes",
+            "group": "build"
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "${workspaceFolder}/bin/godot.x11.tools.64.mono  --test",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "generate glue (release_debug)",
+            "type": "shell",
+            "command": "${workspaceFolder}//bin/godot.x11.opt.tools.64.mono --generate-mono-glue modules/mono/glue",
+            "problemMatcher": [],
+            "group": "build",
+        },
+        {
+            "label": "run (mono)",
+            "type": "shell",
+            "command": "${workspaceFolder}/bin/godot.x11.tools.64.mono"
+        }
+    ]
+}

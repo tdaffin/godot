@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch mono",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/godot.x11.tools.64.mono",
+            "args": [
+                "-e",
+                //"--path",
+                //"/home/tom/dev/godot/VoxelTest"
+                //"/home/tom/dev/godot/VoxelTest/project.godot"
+                //"/home/tom/dev/godot/VoxelTest/World/World.tscn",
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+            //"preLaunchTask": "build (debug)"
+        }
+    ]
+}
